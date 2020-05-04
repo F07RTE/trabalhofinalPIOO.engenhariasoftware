@@ -1,0 +1,47 @@
+﻿@model System.Collections.Generic.List<WebApplication1.Models.Task>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Tarefas</h1>
+    <p>@ViewBag.Name, segue abaixo a lista de tarefas a serem realizadas</p>
+</div>
+
+<table class="table">
+    <tr>
+        <th>
+            Nome
+        </th>
+        <th>
+            Descrição
+        </th>
+        <th>
+            Data Limite
+        </th>
+        <th>
+
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DueDate)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id = item.ID })
+            |
+            @Html.ActionLink("Deletar", "Delete", new { id = item.ID })
+        </td>
+    </tr>
+    }
+</table>
